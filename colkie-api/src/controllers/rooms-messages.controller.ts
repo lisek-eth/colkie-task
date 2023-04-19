@@ -62,7 +62,7 @@ export class RoomsMessagesController {
   @Get()
   @ApiOperation({ summary: 'Get X recent messages' })
   @ApiResponse({ status: 400, description: 'Bad request.' })
-  @ApiOkResponse()
+  @ApiOkResponse({ type: RoomMessageEntity, isArray: true })
   async getMessages(
     @Param('roomId') roomId: string,
     @Query('limit') limit: number,
