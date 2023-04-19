@@ -23,17 +23,15 @@ describe('Rooms Service', () => {
     roomsService = app.get<RoomsService>(RoomsService);
   });
 
-  describe('Rooms creation', () => {
-    it.only('It should throw an error if name is missing', async () => {
-      await expect(roomsService.create('')).rejects.toThrowError();
-    });
+  it('It should throw an error if name is missing', async () => {
+    await expect(roomsService.create('')).rejects.toThrowError();
+  });
 
-    it.only('It should create new room and return ID if name is provided', async () => {
-      roomsRepositoryMock.save.mockResolvedValue({
-        id: 'test_id',
-      } as RoomEntity);
+  it('It should create new room and return ID if name is provided', async () => {
+    roomsRepositoryMock.save.mockResolvedValueOnce({
+      id: 'test_id',
+    } as RoomEntity);
 
-      await expect(roomsService.create('new room')).resolves.toEqual('test_id');
-    });
+    await expect(roomsService.create('new room')).resolves.toEqual('test_id');
   });
 });
