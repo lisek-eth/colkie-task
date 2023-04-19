@@ -20,8 +20,9 @@ export class RoomUserEntity {
   @Column()
   nickname: string;
 
-  constructor(nickname: string) {
+  constructor(room: RoomEntity, nickname: string) {
     this.id = uuid();
+    this.room = room;
     this.nickname = nickname;
   }
 }

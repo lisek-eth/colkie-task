@@ -6,6 +6,7 @@ import { RoomEntity } from './entities/room.entity';
 import { RoomsController } from './controllers/rooms.controller';
 import { RoomMessageEntity } from './entities/room-message.entity';
 import { RoomUserEntity } from './entities/room-user.entity';
+import { RoomsUsersController } from './controllers/rooms-users.controller';
 
 @Module({
   imports: [
@@ -26,7 +27,7 @@ import { RoomUserEntity } from './entities/room-user.entity';
     }),
     TypeOrmModule.forFeature([RoomEntity, RoomUserEntity, RoomMessageEntity]),
   ],
-  controllers: [RoomsController],
+  controllers: [RoomsController, RoomsUsersController],
   providers: [RoomsService],
 })
 export class AppModule {}
