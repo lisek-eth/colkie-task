@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RoomsService } from './services/rooms.service';
 import { RoomEntity } from './entities/room.entity';
 import { RoomsController } from './controllers/rooms.controller';
+import { RoomMessageEntity } from './entities/room-message.entity';
+import { RoomUserEntity } from './entities/room-user.entity';
 
 @Module({
   imports: [
@@ -22,7 +24,7 @@ import { RoomsController } from './controllers/rooms.controller';
       }),
       inject: [ConfigService],
     }),
-    TypeOrmModule.forFeature([RoomEntity]),
+    TypeOrmModule.forFeature([RoomEntity, RoomUserEntity, RoomMessageEntity]),
   ],
   controllers: [RoomsController],
   providers: [RoomsService],
