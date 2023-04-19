@@ -7,6 +7,7 @@ services:
     environment:
       - DB_NAME=colkie_task
       - DB_HOST=mysql-colkie
+      - DB_PORT=3306
       - DB_USER=colkie
       - DB_PASS=password
     ports:

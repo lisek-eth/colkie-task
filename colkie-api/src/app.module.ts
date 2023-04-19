@@ -1,10 +1,30 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { RoomsService } from './services/rooms.service';
+import { RoomEntity } from './entities/room.entity';
+import { RoomsController } from './controllers/rooms.controller';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'mysql',
+        host: configService.get('DB_HOST'),
+        port: parseInt(configService.get('DB_PORT')),
+        username: configService.get('DB_USER'),
+        password: configService.get('DB_PASS'),
+        database: configService.get('DB_NAME'),
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: true,
+      }),
+      inject: [ConfigService],
+    }),
+    TypeOrmModule.forFeature([RoomEntity]),
+  ],
+  controllers: [RoomsController],
+  providers: [RoomsService],
 })
 export class AppModule {}
