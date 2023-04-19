@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import {
-  ApiOkResponse,
+  ApiCreatedResponse,
   ApiOperation,
   ApiResponse,
   ApiTags,
@@ -17,7 +17,7 @@ export class RoomsController {
   @Post()
   @ApiOperation({ summary: 'Create room' })
   @ApiResponse({ status: 400, description: 'Bad request.' })
-  @ApiOkResponse({ type: RoomsCreateResponseDto })
+  @ApiCreatedResponse({ type: RoomsCreateResponseDto })
   async createRoom(
     @Body() roomsCreateDto: RoomsCreateRequestDto,
   ): Promise<RoomsCreateResponseDto> {

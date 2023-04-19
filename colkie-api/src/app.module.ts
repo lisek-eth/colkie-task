@@ -8,6 +8,8 @@ import { RoomMessageEntity } from './entities/room-message.entity';
 import { RoomUserEntity } from './entities/room-user.entity';
 import { RoomsUsersController } from './controllers/rooms-users.controller';
 import { RoomsMessagesController } from './controllers/rooms-messages.controller';
+import { RoomsMessagesService } from './services/rooms-messages.service';
+import { RoomsUsersService } from './services/rooms-users.service';
 
 @Module({
   imports: [
@@ -29,6 +31,6 @@ import { RoomsMessagesController } from './controllers/rooms-messages.controller
     TypeOrmModule.forFeature([RoomEntity, RoomUserEntity, RoomMessageEntity]),
   ],
   controllers: [RoomsController, RoomsUsersController, RoomsMessagesController],
-  providers: [RoomsService],
+  providers: [RoomsService, RoomsMessagesService, RoomsUsersService],
 })
 export class AppModule {}

@@ -12,8 +12,6 @@ export class RoomsService {
   constructor(
     @InjectRepository(RoomEntity)
     private roomsRepository: Repository<RoomEntity>,
-    @InjectRepository(RoomUserEntity)
-    private roomsUsersRepository: Repository<RoomUserEntity>,
   ) {}
 
   async create(name: string): Promise<RoomID> {
@@ -35,25 +33,6 @@ export class RoomsService {
       return this.roomsRepository.findOneBy({ id });
     } catch (e: any) {
       this.logger.error(`Unable to retreive room data from database`, e);
-
-      throw e;
-    }
-  }
-
-  async addUser(room: RoomEntity, nickname: string): Promise<UserID> {
-    try {
-      const newUser = await this.roomsUsersRepository.save(
-        new RoomUserEntity(room, nickname),
-      );
-
-      this.logger.debug(`New user added to a room`);
-
-      return newUser.id;
-    } catch (e: any) {
-      this.logger.error(
-        `Unable to create new user entry in database for room ${room.id}`,
-        e,
-      );
 
       throw e;
     }
