@@ -3,7 +3,12 @@ services:
   colkie-dev:
     image: node:19
     working_dir: /usr/src/colkie-api
-    command: npm run start:dev
+    command: 
+      - /bin/bash
+      - -c
+      - |
+        npm install
+        npm run start:dev
     environment:
       - DB_NAME=colkie_task
       - DB_HOST=mysql-colkie
