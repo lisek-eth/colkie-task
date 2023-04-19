@@ -13,8 +13,6 @@ import {
 } from '@nestjs/swagger';
 import { RoomsAddUserRequestDto } from 'src/dto/rooms-add-user.request.dto';
 import { RoomsAddUserResponseDto } from 'src/dto/rooms-add-user.response.dto';
-import { RoomsCreateRequestDto } from 'src/dto/rooms-create.request.dto';
-import { RoomsCreateResponseDto } from 'src/dto/rooms-create.response.dto';
 import { RoomsService } from 'src/services/rooms.service';
 
 @ApiTags('rooms users')
