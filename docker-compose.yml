@@ -1,0 +1,41 @@
+version: "3"
+services:
+  colkie-dev:
+    image: node:19
+    working_dir: /usr/src/colkie-api
+    command: npm run start:dev
+    environment:
+      - DB_NAME=colkie_task
+      - DB_HOST=mysql-colkie
+      - DB_USER=colkie
+      - DB_PASS=password
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./colkie-api:/usr/src/colkie-api"
+    depends_on:
+      - mysql-colkie
+  # below could be used to build image for prod
+  # colkie-api:
+  #   build:
+  #     context: "./colkie-api"
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - mysql-colkie
+  #   environment:
+  #     - DB_NAME=colkie_task
+  #     - DB_HOST=mysql-colkie
+  #     - DB_USER=colkie
+  #     - DB_PASS=password
+  #   ports:
+  #     - "3000:3000"
+  mysql-colkie:
+    image: mysql:8.0.23
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: colkie_task
+      MYSQL_USER: colkie
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: example
