@@ -14,11 +14,11 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { RoomsSendMessageRequestDto } from 'src/dto/rooms-send-message.request.dto';
-import { RoomMessageEntity } from 'src/entities/room-message.entity';
-import { RoomsMessagesService } from 'src/services/rooms-messages.service';
-import { RoomsUsersService } from 'src/services/rooms-users.service';
-import { RoomsService } from 'src/services/rooms.service';
+import { RoomsSendMessageRequestDto } from '../dto/rooms-send-message.request.dto';
+import { RoomMessageEntity } from '../entities/room-message.entity';
+import { RoomsMessagesService } from '../services/rooms-messages.service';
+import { RoomsUsersService } from '../services/rooms-users.service';
+import { RoomsService } from '../services/rooms.service';
 
 @ApiTags('rooms messages')
 @Controller('rooms/:roomId/messages')

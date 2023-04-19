@@ -5,9 +5,9 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { RoomsCreateRequestDto } from 'src/dto/rooms-create.request.dto';
-import { RoomsCreateResponseDto } from 'src/dto/rooms-create.response.dto';
-import { RoomsService } from 'src/services/rooms.service';
+import { RoomsCreateRequestDto } from '../dto/rooms-create.request.dto';
+import { RoomsCreateResponseDto } from '../dto/rooms-create.response.dto';
+import { RoomsService } from '../services/rooms.service';
 
 @ApiTags('rooms')
 @Controller('rooms')

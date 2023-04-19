@@ -11,10 +11,10 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { RoomsAddUserRequestDto } from 'src/dto/rooms-add-user.request.dto';
-import { RoomsAddUserResponseDto } from 'src/dto/rooms-add-user.response.dto';
-import { RoomsUsersService } from 'src/services/rooms-users.service';
-import { RoomsService } from 'src/services/rooms.service';
+import { RoomsAddUserRequestDto } from '../dto/rooms-add-user.request.dto';
+import { RoomsAddUserResponseDto } from '../dto/rooms-add-user.response.dto';
+import { RoomsUsersService } from '../services/rooms-users.service';
+import { RoomsService } from '../services/rooms.service';
 
 @ApiTags('rooms users')
 @Controller('rooms/:roomId/users')

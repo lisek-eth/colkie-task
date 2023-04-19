@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RoomID } from 'src/common/types';
-import { RoomEntity } from 'src/entities/room.entity';
+import { RoomID } from '../common/types';
+import { RoomEntity } from '../entities/room.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -15,6 +15,8 @@ export class RoomsService {
 
   async create(name: string): Promise<RoomID> {
     try {
+      if (!name || name.length < 1) throw new Error(`name cannot be empty`);
+
       const newRoom = await this.roomsRepository.save(new RoomEntity(name));
 
       this.logger.debug(`New room created`);
