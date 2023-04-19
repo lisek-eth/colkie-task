@@ -1,6 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import {
-  ApiBody,
   ApiOkResponse,
   ApiOperation,
   ApiResponse,
@@ -8,7 +7,6 @@ import {
 } from '@nestjs/swagger';
 import { RoomsCreateRequestDto } from 'src/dto/rooms-create.request.dto';
 import { RoomsCreateResponseDto } from 'src/dto/rooms-create.response.dto';
-import { RoomEntity } from 'src/entities/room.entity';
 import { RoomsService } from 'src/services/rooms.service';
 
 @ApiTags('rooms')
